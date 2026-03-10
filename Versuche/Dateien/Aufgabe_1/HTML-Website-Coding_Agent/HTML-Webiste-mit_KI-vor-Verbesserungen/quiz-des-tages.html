@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<title>Quiz des Tages</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.answer-feedback {
+			margin-top: 10px;
+			font-weight: bold;
+			padding: 10px;
+			border-radius: 5px;
+		}
+		.correct {
+			background-color: #90EE90;
+			color: #001a4d;
+		}
+		.incorrect {
+			background-color: #FFB6C1;
+			color: #001a4d;
+		}
+	</style>
+</head>
+<body>
+	<!-- Navigation Bar -->
+	<nav>
+		<ul>
+			<li><a href="main.html">Startseite</a></li>
+			<li><a href="spruch-des-tages.html">Spruch des Tages</a></li>
+			<li><a href="quiz-des-tages.html">Quiz des Tages</a></li>
+			<li><a href="ueber-uns.html">Über uns</a></li>
+			<li><a href="kontakt.html">Kontakt</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main Content -->
+	<div class="container">
+		<h1>Quiz des Tages</h1>
+		<p>Beantworte die folgenden 5 Fragen und sieh dir dein Ergebnis an!</p>
+
+		<form id="quizForm">
+			<!-- Question 1 -->
+			<div class="quiz-question">
+				<h3>Frage 1: Was bedeutet HTML?</h3>
+				<label><input type="radio" name="q1" value="a"> HyperText Markup Language</label>
+				<label><input type="radio" name="q1" value="b"> Home Tool Modern Language</label>
+				<label><input type="radio" name="q1" value="c"> High Tech Machine Language</label>
+				<div id="feedback1" class="answer-feedback" style="display:none;"></div>
+			</div>
+
+			<!-- Question 2 -->
+			<div class="quiz-question">
+				<h3>Frage 2: Welche Sprache wird für Interaktivität auf Websites verwendet?</h3>
+				<label><input type="radio" name="q2" value="a"> HTML</label>
+				<label><input type="radio" name="q2" value="b"> CSS</label>
+				<label><input type="radio" name="q2" value="c"> JavaScript</label>
+				<div id="feedback2" class="answer-feedback" style="display:none;"></div>
+			</div>
+
+			<!-- Question 3 -->
+			<div class="quiz-question">
+				<h3>Frage 3: Welche Farbe ist am schönsten?</h3>
+				<label><input type="radio" name="q3" value="a"> Navy Blau</label>
+				<label><input type="radio" name="q3" value="b"> Dunkles Orange</label>
+				<label><input type="radio" name="q3" value="c"> Das spielt keine Rolle - alle sind gleich schön</label>
+				<div id="feedback3" class="answer-feedback" style="display:none;"></div>
+			</div>
+
+			<!-- Question 4 -->
+			<div class="quiz-question">
+				<h3>Frage 4: Wie oft pro Woche sollte man diese Website besuchen?</h3>
+				<label><input type="radio" name="q4" value="a"> 1 Mal</label>
+				<label><input type="radio" name="q4" value="b"> 3 Mal</label>
+				<label><input type="radio" name="q4" value="c"> 10 Mal (was völlig normal ist)</label>
+				<div id="feedback4" class="answer-feedback" style="display:none;"></div>
+			</div>
+
+			<!-- Question 5 -->
+			<div class="quiz-question">
+				<h3>Frage 5: Was ist das Ziel dieser Website?</h3>
+				<label><input type="radio" name="q5" value="a"> Dich zum Lachen bringen</label>
+				<label><input type="radio" name="q5" value="b"> Dir etwas beibringen</label>
+				<label><input type="radio" name="q5" value="c"> Beides zusammen</label>
+				<div id="feedback5" class="answer-feedback" style="display:none;"></div>
+			</div>
+
+			<!-- Submit Button -->
+			<button type="button" class="quiz-button" onclick="checkAnswers()">Antworten überprüfen</button>
+		</form>
+
+		<!-- Result -->
+		<div id="resultDiv" style="display:none;">
+			<div class="result" id="resultText"></div>
+			<button type="button" class="quiz-button" onclick="resetQuiz()">Quiz neu starten</button>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<p>&copy; 2026 - Deine Website. Alle Rechte reserviert.</p>
+	</footer>
+
+	<script>
+		// Define correct answers
+		const correctAnswers = {
+			q1: 'a', // HyperText Markup Language
+			q2: 'c', // JavaScript
+			q3: 'c', // Das spielt keine Rolle
+			q4: 'c', // 10 Mal (silly answer)
+			q5: 'c'  // Beides zusammen
+		};
+
+		function checkAnswers() {
+			let score = 0;
+			let answeredAll = true;
+
+			// Check each question
+			for (let i = 1; i <= 5; i++) {
+				const questionName = 'q' + i;
+				const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+				const feedbackDiv = document.getElementById('feedback' + i);
+
+				if (!selectedAnswer) {
+					// No answer selected
+					feedbackDiv.style.display = 'block';
+					feedbackDiv.textContent = 'Bitte antworte auf diese Frage!';
+					feedbackDiv.className = 'answer-feedback incorrect';
+					answeredAll = false;
+				} else {
+					// Check if answer is correct
+					if (selectedAnswer.value === correctAnswers[questionName]) {
+						score++;
+						feedbackDiv.style.display = 'block';
+						feedbackDiv.textContent = '✓ Korrekt!';
+						feedbackDiv.className = 'answer-feedback correct';
+					} else {
+						feedbackDiv.style.display = 'block';
+						feedbackDiv.textContent = '✗ Leider falsch!';
+						feedbackDiv.className = 'answer-feedback incorrect';
+					}
+				}
+			}
+
+			// Show result if all answered
+			if (answeredAll) {
+				document.getElementById('quizForm').style.display = 'none';
+				showResult(score);
+			}
+		}
+
+		function showResult(score) {
+			const resultDiv = document.getElementById('resultDiv');
+			const resultText = document.getElementById('resultText');
+			resultText.textContent = `Du hast ${score} von 5 Punkten erreicht! ${getResultMessage(score)}`;
+			resultDiv.style.display = 'block';
+		}
+
+		function getResultMessage(score) {
+			if (score === 5) {
+				return 'Perfekt! Du bist ein Quiz-Meister! 🎉';
+			} else if (score >= 4) {
+				return 'Sehr gut! Das hast du prima gemacht!';
+			} else if (score >= 3) {
+				return 'Nicht schlecht! Mit mehr Übung wird es noch besser!';
+			} else if (score >= 1) {
+				return 'Keep practicing! Du schaffst das!';
+			} else {
+				return 'Keine Punkte... aber hey, jeder fängt mal an! 😄';
+			}
+		}
+
+		function resetQuiz() {
+			// Reset form
+			document.getElementById('quizForm').reset();
+			
+			// Hide all feedback
+			for (let i = 1; i <= 5; i++) {
+				document.getElementById('feedback' + i).style.display = 'none';
+			}
+			
+			// Show form again
+			document.getElementById('quizForm').style.display = 'block';
+			document.getElementById('resultDiv').style.display = 'none';
+		}
+	</script>
+</body>
+</html>

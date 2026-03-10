@@ -1,0 +1,162 @@
+
+  body {                /*Body der Website*/
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 100px;
+    background-color: rgb(1, 38, 51);
+	margin-bottom: 100px;
+  }
+  
+  link {
+    font-family: Arial, sans-serif; /* Schriftart */
+    font-size: 15px;                /* Größe */
+    color: rgb(200, 128, 21);                    /* Farbe */
+    text-align: center;
+	display: block;                 /* Wichtig, damit text-align bei Tags wie t1 wirkt */
+	margin-top: 50px; /*Ränder über und unter den Links */
+	margin-bottom: 50px;
+  text-decoration:underline,unset;
+
+  }
+
+/* Navbar Container */
+.navbar {
+    position: fixed; /* Fixiert am oberen Rand */
+    top: 0;
+    width: 100%;
+    height: 70px;
+    margin-bottom: px;
+    background-color: rgba(8, 74, 98, 0.95); /* Leicht transparent */
+    display: flex;
+    justify-content: space-between; /* Logo links, Links rechts */
+    align-items: center;
+    padding: 0 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    box-sizing: border-box; /* Padding einberechnen */
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(200, 128, 21);    
+    text-decoration: none;
+}
+
+/* Nav Links Container */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Abstand zwischen den Links */
+    margin: 0;
+    padding: 0;
+}
+
+/* Links */
+.nav-links a {
+    text-decoration: none;
+    color: rgba(231, 171, 81, 0.575);;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effekt */
+.nav-links a:hover {
+    color: #000;
+}
+
+/* CTA Button Styling (Call to Action) */
+.nav-links .cta {
+    background-color: rgb(200, 128, 21);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links .cta:hover {
+    background-color: #000;
+    color: white;
+}
+
+/*Text Stylings*/
+
+t3 {
+    font-family: Arial, sans-serif; /* Schriftart */
+    font-size: 15px;                /* Größe */
+    color: rgb(200, 128, 21);                    /* Farbe */
+    text-align: center;
+	display: block;                 /* Wichtig, damit text-align bei Tags wie t1 wirkt */
+	margin-top: 50px;   /*Ränder über und unter den Texten*/
+	margin-bottom: 50px;
+  line-height: 300%; /* Zeilenabstand */  
+  }
+
+     t2 {
+    font-family: Arial, sans-serif; /* Schriftart */
+    font-size: 20px;                /* Größe */
+    color: rgb(200, 128, 21);                    /* Farbe */
+    text-align: center;
+	display: block;                 /* Wichtig, damit text-align bei Tags wie t1 wirkt */
+	margin-top: 50px;
+	margin-bottom: 50px;
+    /*font-weight: bold;              /* Fettung */
+  }
+    t1 {
+    font-family: Arial, sans-serif; /* Schriftart */
+    font-size: 15px;                /* Größe */
+    color: rgb(200, 128, 21);                    /* Farbe */
+    text-align: center;
+	display: block;                 /* Wichtig, damit text-align bei Tags wie t1 wirkt */
+	margin-top: 50px;   /*Ränder über und unter den Texten*/
+	margin-bottom: 50px;
+    /*font-weight: bold;              /* Fettung */
+  }
+  h1 {
+    font-family: Arial, sans-serif; /* Schriftart */
+    font-size: 35px;                /* Größe */
+    color: rgb(200, 128, 21);                    /* Farbe */
+    text-align: center;
+	display: block;                 /* Wichtig, damit text-align bei Tags wie t1 wirkt */
+	margin-top: 20px; /*Ränder über und unter der Überschrift*/
+	margin-bottom: 20px;
+  }
+
+
+  /*Quiz Styling*/
+  .quiz-box {
+    
+    background: rgba(8, 74, 98, 0.95);
+    padding: 30px;
+    width: 400px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    font-size: 20px;      
+    font-weight: bold;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    cursor: pointer;
+    font-size: 15px;           
+    background: rgba(231, 171, 81, 0.575);
+
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 20px;           
+
+}
+
+/* Bild Styling zur automatischen größenanpassung an Bildschirmgröße*/
+img {
+  max-width: 100%;
+  height: auto;
+}

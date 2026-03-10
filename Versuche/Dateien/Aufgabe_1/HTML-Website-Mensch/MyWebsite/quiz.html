@@ -1,0 +1,119 @@
+<html lang="de">
+<meta charset="UTF-8">
+<head>
+	<title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <nav class="navbar">
+        <div class="logo"><a href="main.html" style="text-decoration:none;color: rgb(200, 128, 21);">Home</a></div>
+        <ul class="nav-links">
+            <li><a href="spruchdestages.html">Spruch des Tages</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="UeberUns.html">Über uns</a></li>
+            <li><a href="kontakt.html" class="cta">Kontakt</a></li>
+        </ul>
+    </nav>	
+
+	
+<h1 style = "text-align: center;"><b>Quiz des Wissens</b></h1>
+ <t2>Willkommen zum einzigen Quiz welches du jemals brauchst!
+  <br>Hier kannst du alles über alles lernen was du schon immer wissen wolltest!
+ </t2>
+
+<br>
+<!-- Hier beginnt das eigentliche Quiz -->
+<div class="quiz-box">
+    <h2 style="font-size: 35px; margin-bottom: 20px;">💻 Informatik Quiz</h2>
+    <p id="question" style="font-size: 15px;"></p>
+    <div id="answers"></div>
+    <p id="result"></p>
+</div>
+<!--Java Script zum Quiz für funktion-->
+<script>
+    // Hier werden die Fragen, Antworten und die korrekten Antworten definiert
+const quiz = [
+    {
+        question: "Wofür steht HTML?",
+        answers: [
+            "Hyper Text Markup Language",
+            "High Transfer Machine Language",
+            "Home Tool Markup Language"
+        ],
+        correct: 0
+    },
+    {
+        question: "Hab ich das ganze hier wirklich freiwillig gemacht?",
+        answers: [
+            "Ja",
+            "Nein",
+            "Vielleicht"
+        ],
+        correct: 1
+    },
+    {
+        question: "Was ist GitHub Copilot eigentlich für nen geiles Ding?",
+        answers: [
+            "Schon fast zu gut um wahr zu sein",
+            "Eigentich sehr schlecht",
+            "Vielleicht irgendwas zwischen genial und schlecht"
+        ],
+        correct: 2
+    },
+    {
+        question: "Welche Sprache läuft im Browser?",
+        answers: [
+            "Python",
+            "JavaScript",
+            "C++"
+        ],
+        correct: 1
+    }
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+// Diese Funktion lädt die aktuelle Frage und die Antworten in die HTML-Elemente
+function loadQuestion() {
+    const questionData = quiz[currentQuestion];
+    document.getElementById("question").innerText = questionData.question;
+    document.getElementById("question").style.fontSize = "20px";
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    questionData.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.innerText = answer;
+        button.onclick = () => checkAnswer(index);
+        answersDiv.appendChild(button);
+    });
+}
+//Diese Funktion überprüft die Antwort des Benutzers und aktualisiert den Punktestand sowie die nächste Frage
+function checkAnswer(index) {
+    if (index === quiz[currentQuestion].correct) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < quiz.length) {
+        loadQuestion();
+    } else {
+        document.querySelector(".quiz-box").innerHTML =
+            `<h2 style="font-size: 35px;">Quiz beendet!</h2>
+             <p style="font-size: 25px;">Du hast ${score} von ${quiz.length} Fragen richtig!</p>`;
+    }
+}
+
+loadQuestion();
+
+</script>
+
+
+</body>
+</html>  

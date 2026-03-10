@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz des Tages - Die Große Nichtigkeit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .quiz-container {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .question {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--dark-orange);
+            border-radius: 5px;
+        }
+
+        .question h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .answer-btn {
+            background-color: var(--light-blue);
+            color: white;
+            border: 2px solid transparent;
+            padding: 12px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .answer-btn:hover {
+            background-color: #2a8fa3;
+            transform: translateX(5px);
+        }
+
+        .answer-btn.selected {
+            background-color: var(--dark-orange);
+            border: 2px solid var(--dark-blue);
+        }
+
+        .submit-btn {
+            background-color: var(--dark-orange);
+            color: var(--dark-blue);
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff8551;
+            transform: scale(1.05);
+        }
+
+        .result {
+            display: none;
+            background-color: var(--light-blue);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .result h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            color: white;
+            font-size: 18px;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--dark-orange);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">🎭 Nichtigkeit</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="spruch-des-tages.html">Spruch des Tages</a></li>
+                    <li><a href="quiz-des-tages.html" class="active">Quiz des Tages</a></li>
+                    <li><a href="über-uns.html">Über uns</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Quiz des Tages</h1>
+            <p>Testen Sie Ihr Wissen über Dinge, die nicht wichtig sind.</p>
+        </section>
+
+        <section class="content">
+            <div class="quiz-container">
+                <!-- Question 1 -->
+                <div class="question">
+                    <h3>Frage 1: Was ist HTML?</h3>
+                    <div class="answer-options">
+                        <button class="answer-btn" data-question="1" data-answer="0">A) Eine Art Fisch im Internet</button>
+                        <button class="answer-btn" data-question="1" data-answer="1">B) Eine Programmiersprache für Webseiten</button>
+                        <button class="answer-btn" data-question="1" data-answer="2">C) Ein deutsches Wort für "Hut-Müll-Lautsprecher"</button>
+                        <button class="answer-btn" data-question="1" data-answer="3">D) Eine neue Marke für Zahnpasta</button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question">
+                    <h3>Frage 2: Wie viele Elefanten passen in einen Kühlschrank?</h3>
+                    <div class="answer-options">
+                        <button class="answer-btn" data-question="2" data-answer="0">A) Genau drei</button>
+                        <button class="answer-btn" data-question="2" data-answer="1">B) So viele wie man will - Elefanten sind dehnbar</button>
+                        <button class="answer-btn" data-question="2" data-answer="2">C) Keinen, weil Elefanten nicht quadratisch sind</button>
+                        <button class="answer-btn" data-question="2" data-answer="3">D) Diese Frage ergibt keinen Sinn</button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question">
+                    <h3>Frage 3: Was ist ein Datentyp in JavaScript?</h3>
+                    <div class="answer-options">
+                        <button class="answer-btn" data-question="3" data-answer="0">A) Ein kategorisieren von Daten (string, number, boolean, etc.)</button>
+                        <button class="answer-btn" data-question="3" data-answer="1">B) Ein spezieller Modetanz aus den 1970ern</button>
+                        <button class="answer-btn" data-question="3" data-answer="2">C) Ein Art Fisch, der nur auf Daten schwimmt</button>
+                        <button class="answer-btn" data-question="3" data-answer="3">D) Eine versteckte Botschaft in Zahlenreihen</button>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question">
+                    <h3>Frage 4: Wie heißt der Erfinder des Mittwochs?</h3>
+                    <div class="answer-options">
+                        <button class="answer-btn" data-question="4" data-answer="0">A) Mittwoch wurde von Dienstag erfunden</button>
+                        <button class="answer-btn" data-question="4" data-answer="1">B) Klaus Mittwoch (sein Urgroßvater war Montag)</button>
+                        <button class="answer-btn" data-question="4" data-answer="2">C) Die Römer, weil sie langweilig wurden</button>
+                        <button class="answer-btn" data-question="4" data-answer="3">D) Der Mittwoch wurde nicht erfunden, er ist einfach immer hier gewesen</button>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question">
+                    <h3>Frage 5: Warum ist der Himmel gelb?</h3>
+                    <div class="answer-options">
+                        <button class="answer-btn" data-question="5" data-answer="0">A) Weil die Erde zu viel Senf gegessen hat</button>
+                        <button class="answer-btn" data-question="5" data-answer="1">B) Die Sonne malt es jeden Morgen an</button>
+                        <button class="answer-btn" data-question="5" data-answer="2">C) Welche Frage? Der Himmel ist nie gelb</button>
+                        <button class="answer-btn" data-question="5" data-answer="3">D) Das hängt von deinem Lieblingskäse ab</button>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="showResults()">Ergebnisse anzeigen</button>
+
+                <div class="result" id="result">
+                    <h2>Ihr Ergebnis:</h2>
+                    <div class="score" id="score">0 / 5</div>
+                    <p id="resultMessage">Herzlichen Glückwunsch... oder nicht!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Die Große Nichtigkeit. Alle Rechte vorbehalten (oder auch nicht).</p>
+    </footer>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html>
