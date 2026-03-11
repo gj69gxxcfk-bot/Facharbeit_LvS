@@ -1,0 +1,6 @@
+Website; Motivationsspruch des Tages 
+—> Einfache website welche jeden tag einen anderen Spruch anzeigt. 
+—> Ästhetisches Top Bar Menü
+—> Mehrere Unterseiten 
+—> Simples multiple Choice Quiz 
+—> Schlichtes Design 
